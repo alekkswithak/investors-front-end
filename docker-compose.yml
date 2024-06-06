@@ -1,0 +1,11 @@
+
+services:
+
+  react:
+    container_name: test-app
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/app/src
