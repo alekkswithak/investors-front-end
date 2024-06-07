@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Table } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const InvestorTable = () => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
+
+  const handleRowClick = (investor) => {
+    navigate(`/detail/${investor.firm_id}`, { state: { investor } });
+  };
 
   useEffect(() => {
     axios
@@ -28,7 +34,7 @@ const InvestorTable = () => {
       </thead>
       <tbody>
         {data.map((investor) => (
-          <tr key={investor.firm_id}>
+          <tr key={investor.firm_id} onClick={() => handleRowClick(investor)}>
             <td>{investor.firm_id}</td>
             <td>{investor.firm_name}</td>
             <td>{new Date(investor.date_added).toLocaleDateString()}</td>

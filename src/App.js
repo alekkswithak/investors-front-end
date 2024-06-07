@@ -25,7 +25,7 @@ function App() {
       <Container className="mt-3">
         <Routes>
           <Route path="/" exact element={<InvestorTable />} />
-          <Route path="/detail" component={InvestorDetail} />
+          <Route path="/detail/:id" element={<InvestorDetail />} />
         </Routes>
       </Container>
     </BrowserRouter>
